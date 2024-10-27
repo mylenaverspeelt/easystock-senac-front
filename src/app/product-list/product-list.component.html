@@ -1,0 +1,28 @@
+<div class="product-list">
+    <h2>Lista de Produtos</h2>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Preço</th>
+          <th>Quantidade</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.name }}</td>
+          <td>{{ product.price | number:'1.2-2' }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>
+            <button (click)="editProduct(product)">Editar</button>
+            <button (click)="deleteProduct(product.id)">Deletar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <button (click)="addProduct()">Adicionar Produto</button>
+  </div>
+  

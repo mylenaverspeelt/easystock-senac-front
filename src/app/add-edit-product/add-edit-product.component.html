@@ -1,0 +1,32 @@
+<div class="add-edit-product">
+    <h2>Adicionar/Editar Produto</h2>
+  
+    <form [formGroup]="productForm" (ngSubmit)="saveProduct()">
+      <div>
+        <label for="name">Nome:</label>
+        <input id="name" formControlName="name" type="text" />
+        <div *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched">
+          <small>O nome é obrigatório.</small>
+        </div>
+      </div>
+  
+      <div>
+        <label for="price">Preço:</label>
+        <input id="price" formControlName="price" type="number" />
+        <div *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched">
+          <small>O preço deve ser maior ou igual a 0.</small>
+        </div>
+      </div>
+  
+      <div>
+        <label for="quantity">Quantidade:</label>
+        <input id="quantity" formControlName="quantity" type="number" />
+        <div *ngIf="productForm.get('quantity')?.invalid && productForm.get('quantity')?.touched">
+          <small>A quantidade deve ser maior ou igual a 0.</small>
+        </div>
+      </div>
+  
+      <button type="submit" [disabled]="productForm.invalid">Salvar</button>
+    </form>
+  </div>
+  
