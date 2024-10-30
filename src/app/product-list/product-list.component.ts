@@ -3,16 +3,18 @@ import { ProductService } from '../product.service';
 import { Router } from '@angular/router';
 import { Product } from '../models/Product.model'; 
 import { CommonModule } from '@angular/common';
+import { LowStockAlertComponent } from "../low-stock-alert/low-stock-alert.component";
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule], // Certifique-se de que o CommonModule está incluído
+  imports: [CommonModule, LowStockAlertComponent],
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
+  lowStockProducts: Product[] = []; // Produtos com estoque baixo
 
   constructor(private productService: ProductService, private router: Router) {}
 
@@ -22,7 +24,11 @@ export class ProductListComponent implements OnInit {
 
   loadProducts(): void {
     this.productService.getAllProducts().subscribe((data: Product[]) => {
-      this.products = data.sort((a, b) => a.id - b.id);
+      // Ordena os produtos por quantidade do maior para o menor
+      this.products = data.sort((a, b) => b.quantity - a.quantity);
+
+      // Filtra produtos com quantidade menor que 5
+      this.lowStockProducts = this.products.filter(product => product.quantity < 5);
     });
   }
 

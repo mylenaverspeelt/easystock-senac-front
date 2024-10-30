@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Product } from './models/Product.model'
+import { Product } from './models/Product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,18 +25,18 @@ export class ProductService {
   addProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(this.baseUrl, product);
   }
-  
-  // Método para atualizar um produto (parâmetro e retorno tipados com Product)
-  updateProduct(id: number, product: Product): Observable<Product> {
-    return this.http.put<Product>(`${this.baseUrl}/${id}`, product);
+
+  // Método para atualizar um produto existente (tipado com Product)
+  updateProduct(product: Product): Observable<Product> {
+    return this.http.put<Product>(`${this.baseUrl}/${product.id}`, product);
   }
 
-  // Método para deletar um produto (retorno tipado com void, pois não retorna dados)
+  // Método para deletar um produto (retorno tipado com void)
   deleteProduct(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
 
-  // Método para obter produtos com baixo estoque (retorno tipado com Product[])
+  // Método para obter produtos com baixo estoque (tipado com Product[])
   getLowStockProducts(minQuantity: number): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.baseUrl}/low-stock?minQuantity=${minQuantity}`);
   }

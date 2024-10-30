@@ -1,17 +1,52 @@
 table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    padding: 8px;
-    text-align: left;
-    border: 1px solid #ccc;
-  }
-  
-  button {
-    margin: 0 4px;
-    padding: 4px 8px;
-    cursor: pointer;
-  }
-  
+  width: 100%;
+  border-collapse: collapse;
+  background-color: rgb(245, 244, 244);
+
+}
+
+th, td {
+  padding: 8px;
+  text-align: center  ;
+  border: 1px solid rgb(198, 198, 199);
+}
+
+button {
+  margin: 0 4px;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 1rem;
+  background-color: rgb(247, 247, 247);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: none;
+}
+
+button:hover {
+  transform: translateY(-4px);
+}
+
+.addButton {
+  margin-top: 2rem;
+  background-color: green;
+  color: white;
+}
+
+.editButton {
+  background-color: rgb(196, 237, 255);
+}
+
+.deleteButton {
+  background-color: red;
+  color: white;
+}
+
+.divLowStock{
+  text-align: center; 
+}
+
+.divAddButton{
+  text-align: center; 
+
+}

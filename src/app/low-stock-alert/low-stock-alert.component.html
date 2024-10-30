@@ -1,1 +1,11 @@
-<p>low-stock-alert works!</p>
+<h3>Produtos com estoque baixo (menos de 5 unidades)</h3>
+
+<ul *ngIf="lowStockProducts.length > 0; else noLowStock">
+  <li *ngFor="let product of lowStockProducts">
+    {{ product.name }} - Quantidade: {{ product.quantity }}
+  </li>
+</ul>
+
+<ng-template  noLowStock>
+  <p>Não há produtos com estoque baixo.</p>
+</ng-template>

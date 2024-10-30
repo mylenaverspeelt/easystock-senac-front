@@ -27,13 +27,16 @@ export class AddProductComponent {
     });
   }
 
-  // Método para lidar com o envio do formulário
   onSubmit(): void {
     if (this.productForm.valid) {
-      this.productService.addProduct(this.productForm.value).subscribe(() => {
-        alert('Produto adicionado com sucesso!');
-        this.router.navigate(['/product-list']);
-      });
+      this.productService.addProduct(this.productForm.value).subscribe(
+        () => {
+          this.router.navigate(['/products']); 
+        },
+        (error) => {
+          console.error('Erro ao salvar produto:', error);
+        }
+      );
     }
   }
 }
